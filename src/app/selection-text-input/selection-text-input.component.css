@@ -1,0 +1,35 @@
+.selection-container {
+    position: relative;
+    display: inline-block;
+}
+
+.selection-list {
+    padding: 5px 0;
+
+    background-color: white;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    border-radius: 6px;
+
+    overflow: auto;
+    max-height: 200px;
+
+    position: absolute;
+    z-index: 1000;
+}
+
+.selection-list ul {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.selection-list ul li {
+    list-style: none;
+    padding: .5em 1em;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.selection-list ul li:hover {
+    background-color: lightgray;
+}
+

@@ -1,0 +1,8 @@
+<button
+  class="btn"
+  [class]="currentClass"
+  (click)="triggerAction()"
+  [disabled]="disabled || isInProgress"
+>
+  <ng-container *ngTemplateOutlet="currentTemplate"> </ng-container>
+</button>

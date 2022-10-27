@@ -2,3 +2,11 @@
 body {
   padding: 10px;
 }
+
+.mr {
+  margin-right: 1em;
+}
+
+.ml {
+  margin-left: 1em;
+}

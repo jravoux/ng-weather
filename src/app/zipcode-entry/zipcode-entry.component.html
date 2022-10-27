@@ -1,8 +1,41 @@
 <div class="well">
-  <h2>Enter a zipcode:</h2>
-  <input type="text" #zipcode placeholder="Zipcode" class="form-control">
-  <br>
-  <button class="btn btn-primary" (click)="addLocation(zipcode.value)" >
-    Add location
-  </button>
+  <h2>Enter a zipcode and country:</h2>
+  <form class="form-inline" [formGroup]="form">
+    <input
+      type="text"
+      formControlName="zipCode"
+      placeholder="Zipcode"
+      class="form-control mr"
+    />
+    <app-selection-text-input
+      class="mr"
+      inputClass="form-control"
+      placeholder="Country"
+      formControlName="countryCode"
+      itemLabel="name"
+      itemValue="code"
+      [selectionList]="(countries$ | async) ?? []"
+      (filterList)="filterList($event)"
+    ></app-selection-text-input>
+    <app-action-button
+      [baseTemplate]="base"
+      baseClass="btn-primary"
+      [inProgressTemplate]="inProgress"
+      inProgressClass="btn-primary"
+      [completeTemplate]="complete"
+      completeClass="btn-success"
+      [action$]="addLocation()"
+      [disabled]="!form.valid"
+    >
+    </app-action-button>
+    <span *ngIf="form.errors?.codeAlreadyPresent" class="form-error ml">
+      This location is already registered!
+    </span>
+  </form>
 </div>
+
+<ng-template #base>Add location</ng-template>
+
+<ng-template #inProgress>Adding...</ng-template>
+
+<ng-template #complete>&check; Done</ng-template>

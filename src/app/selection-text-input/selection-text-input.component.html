@@ -1,0 +1,19 @@
+<div class="selection-container">
+  <input
+    [class]="inputClass"
+    [placeholder]="placeholder"
+    [value]="fieldValue"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    (input)="onInput($event)"
+  />
+  <div class="selection-list" *ngIf="showSelectionList">
+    <ul>
+      <li
+        *ngFor="let item of selectionList"
+        (mousedown)="selectValue(item)"
+        [innerHTML]="item | selectionListLabel: itemLabel:fieldValue"
+      ></li>
+    </ul>
+  </div>
+</div>
